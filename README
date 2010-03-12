@@ -1,0 +1,28 @@
+libnss-gw-name
+==============
+
+The libnss-gw-name name service switch module resolves the name
+“gateway.current” to the IP address of the gateway of the currently
+configured default route.
+
+Manual installation
+===================
+
+The Debian package takes automatically care of setting up libnss-gw-name.
+To compile libnss-gw-name manually, you need to have the libnl library
+installed (libnl-dev on Debian) and then run 
+
+$ make && make install
+
+To make the system actually use this NSS module, add it to the list of
+hosts modules in /etc/nsswitch.conf:
+
+hosts:          files gw_name dns
+
+Credits
+=======
+
+libnss-gw-name is © 2010 Joachim Breitner and licensed under the terms of
+the GNU General Public Licencse, version 2 or later (see LICENSE).
+
+It incorporates some code from the nss-mdns module, © 2004 Lennart Poettering.

@@ -1,0 +1,5 @@
+libnss-gw-name (0.1-1) UNRELEASED; urgency=low
+
+  * Initial release (Closes: #573605)
+
+ -- Joachim Breitner <nomeata@debian.org>  Fri, 12 Mar 2010 14:29:59 +0100
