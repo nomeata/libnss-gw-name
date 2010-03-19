@@ -72,7 +72,14 @@ find_gateway() {
 		if (rtnl_route_get_dst_len(route) != 0) continue;
 		
 		// Found a gateway
-		gw = nl_addr_clone(rtnl_route_get_gateway (route));
+		struct nl_addr *gw_ = rtnl_route_get_gateway(route);
+		if (!gw_) continue;
+
+		// Clone the address, as this one will be freed with the route cache (will it?)
+		gw = nl_addr_clone(gw_);
+		if (!gw) continue;
+
+		break;
 
 		//char buf[100];
 		//printf("Addr: %s\n", nl_addr2str(dst,buf,100));
