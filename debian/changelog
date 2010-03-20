@@ -1,3 +1,9 @@
+libnss-gw-name (0.2-1) unstable; urgency=low
+
+  * Actually release the previous change as a new upstream version.
+
+ -- Joachim Breitner <nomeata@debian.org>  Sat, 20 Mar 2010 12:05:12 +0100
+
 libnss-gw-name (0.1-2) unstable; urgency=low
 
   * Resolve “gateway.localhost” instead of “gateway.current” (Closes: #574561)
