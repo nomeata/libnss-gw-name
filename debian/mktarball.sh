@@ -10,6 +10,6 @@ git archive \
 	--prefix "libnss-gw-name-$1/" \
 	--format tar \
 	HEAD |
-	tar --delete "libnss-gw-name-$1/debian" "libnss-gw-name-$1/mktarball.sh" |
+	tar --delete "libnss-gw-name-$1/debian" |
 	gzip -9 >  "../libnss-gw-name_$1.orig.tar.gz" \
 
