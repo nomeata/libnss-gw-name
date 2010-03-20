@@ -2,7 +2,7 @@ libnss-gw-name
 ==============
 
 The libnss-gw-name name service switch module resolves the name
-“gateway.current” to the IP address of the gateway of the currently
+“gateway.localhost” to the IP address of the gateway of the currently
 configured default route.
 
 Manual installation

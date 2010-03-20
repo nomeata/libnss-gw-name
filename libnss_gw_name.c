@@ -108,7 +108,7 @@ enum nss_status _nss_gw_name_gethostbyname_r (
 	size_t idx, astart;
 	struct nl_addr *gw;
 
-	if (!strcmp(name,"gateway.current")) {
+	if (!strcmp(name,"gateway.localhost")) {
 		// Look up gatway
 		gw = find_gateway();
 		if (!gw) {

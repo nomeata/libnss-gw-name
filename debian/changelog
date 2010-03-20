@@ -1,3 +1,9 @@
+libnss-gw-name (0.1-2) UNRELEASED; urgency=low
+
+  * Resolve “gateway.localhost” instead of “gateway.current” (Closes: #574561)
+
+ -- Joachim Breitner <nomeata@debian.org>  Sat, 20 Mar 2010 10:59:39 +0100
+
 libnss-gw-name (0.1-1) unstable; urgency=low
 
   * Initial release (Closes: #573605)

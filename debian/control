@@ -19,7 +19,7 @@ Architecture: linux-any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Suggests: ${alternatelibs:Suggests}
 Description: nss module that names the current gateway’s IP address
- This Name Service Switch (NSS) module resolves the name “gateway.current” to
+ This Name Service Switch (NSS) module resolves the name “gateway.localhost” to
  the IP of the current default gateways of the system. This allows easy access
  to router configuration and to check if connectivity problems are local or
  not.
