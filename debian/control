@@ -9,7 +9,7 @@ Build-Depends:
 # Disable multilib until libnl supports it
 # gcc-multilib [sparc i386 kfreebsd-amd64 amd64 mips mipsel powerpc s390]
 Standards-Version: 3.8.4
-Homepage: http://www.joachim-breitner.de/projecs#libss-gw-name
+Homepage: http://www.joachim-breitner.de/projects#libnss-gw-name
 VCS-Git: git://git.nomeata.de/libnss-gw-name.git
 VCS-Browser: http://git.nomeata.de/?p=libnss-gw-name.git
 

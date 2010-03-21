@@ -1,3 +1,9 @@
+libnss-gw-name (0.2-2) UNRELEASED; urgency=low
+
+  * Fix typo in Homepage, thx to Tomas Pospisek for noticing (Closes: #574893)
+
+ -- Joachim Breitner <nomeata@debian.org>  Sun, 21 Mar 2010 23:40:54 +0100
+
 libnss-gw-name (0.2-1) unstable; urgency=low
 
   * Actually release the previous change as a new upstream version.
