@@ -1,9 +1,9 @@
-libnss-gw-name (0.2.1-1) UNRELEASED; urgency=low
+libnss-gw-name (0.2.1-1) unstable; urgency=low
 
   * Fix typo in Homepage, thx to Tomas Pospisek for noticing (Closes: #574893)
   * Build with Multi-Arch support 
 
- -- Joachim Breitner <nomeata@debian.org>  Sun, 21 Mar 2010 23:40:54 +0100
+ -- Joachim Breitner <nomeata@debian.org>  Tue, 28 Jun 2011 12:28:12 +0200
 
 libnss-gw-name (0.2-1) unstable; urgency=low
 
