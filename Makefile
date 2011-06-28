@@ -15,7 +15,7 @@ BIT_CFLAGS = $(if $(BITSOFS),-m$(BITSOFS))
 CFLAGS = $(BIT_CFLAGS) -g -O2 -Wall -Wpointer-arith
 CPPFLAGS =
 LIBS = `pkg-config --libs libnl-1`
-LDFLAGS = -shared -Wl,-soname,$(INSTALL_NAME) -Wl,-z,defs --no-allow-shlib-undefined
+LDFLAGS = -shared -Wl,-soname,$(INSTALL_NAME) -Wl,-z,defs
 
 all: $(SHARED_OBJECT)
 
