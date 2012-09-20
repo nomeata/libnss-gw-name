@@ -12,16 +12,15 @@ SHARED_OBJECT = libnss_gw_name$(BITSOFS).so.2
 INSTALL_NAME = libnss_gw_name.so.2
 # This only works sometimes, give manually when needed:
 BIT_CFLAGS = $(if $(BITSOFS),-m$(BITSOFS))
-CFLAGS = $(BIT_CFLAGS) -g -O2 -Wall -Wpointer-arith \
-	`pkg-config --cflags libnl-3.0 libnl-route-3.0`
-CPPFLAGS =
-LIBS = `pkg-config --libs libnl-3.0 libnl-route-3.0`
+CFLAGS = $(BIT_CFLAGS) -g -O2 -Wall -Wpointer-arith
+CPPFLAGS = $(shell pkg-config --cflags libnl-3.0 libnl-route-3.0)
+LIBS = $(shell pkg-config --libs libnl-3.0 libnl-route-3.0)
 LDFLAGS = -shared -Wl,-soname,$(INSTALL_NAME) -Wl,-z,defs
 
 all: $(SHARED_OBJECT)
 
 $(SHARED_OBJECT): $(OBJECTS)
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $(SHARED_OBJECT) $(OBJECTS) $(LIBS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(LDFLAGS) -o $(SHARED_OBJECT) $(OBJECTS) $(LIBS)
 
 %$(OBJSUFFIX): %.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) -fPIC -c -o $@ $<

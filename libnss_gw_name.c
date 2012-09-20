@@ -19,8 +19,6 @@
  *  © 2004 Lennart Poettering.
  */
 
-
-// #include <netlink/route/rtnl.h>
 #include <netlink/socket.h>
 #include <netlink/route/route.h>
 #include <nss.h>
