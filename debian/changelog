@@ -1,6 +1,7 @@
 libnss-gw-name (0.3-1) experimental; urgency=low
 
   * Port to libnl-3.x (Closes: #688166)
+  * Bump Standards-Version
 
  -- Joachim Breitner <nomeata@debian.org>  Thu, 20 Sep 2012 13:21:17 +0200
 

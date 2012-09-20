@@ -7,7 +7,7 @@ Build-Depends:
   pkg-config,
   libnl-3-dev,
   libnl-route-3-dev,
-Standards-Version: 3.8.4
+Standards-Version: 3.9.3
 Homepage: http://www.joachim-breitner.de/projects#libnss-gw-name
 VCS-Git: git://git.nomeata.de/libnss-gw-name.git
 VCS-Browser: http://git.nomeata.de/?p=libnss-gw-name.git
