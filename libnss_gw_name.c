@@ -1,5 +1,5 @@
 /*  
- *  Copyright © 2010 Joachim Breitner
+ *  Copyright © 2010,2012 Joachim Breitner
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -20,7 +20,8 @@
  */
 
 
-#include <netlink/route/rtnl.h>
+// #include <netlink/route/rtnl.h>
+#include <netlink/socket.h>
 #include <netlink/route/route.h>
 #include <nss.h>
 #include <netdb.h>
@@ -41,24 +42,23 @@ typedef struct {
 static struct nl_addr *
 find_gateway() {
 	struct nl_cache* route_cache;
-	struct nl_handle *sock;
+	struct nl_sock *sock;
 	struct nl_object *obj;
 	struct nl_addr *gw = NULL;
 	int err;
 
 	// Allocate a new netlink socket
-	sock = nl_handle_alloc();
+	sock = nl_socket_alloc();
 
 	err = nl_connect(sock, NETLINK_ROUTE);
 	if (err) {
-		nl_handle_destroy(sock);
+		nl_socket_free(sock);
 		return NULL;
 	}
 
-	route_cache = rtnl_route_alloc_cache (sock);
-	if (!route_cache) {
+	if (rtnl_route_alloc_cache(sock, AF_INET, 0, &route_cache)) {
 		nl_close(sock);
-		nl_handle_destroy(sock);
+		nl_socket_free(sock);
 		return NULL;
 	}
 
@@ -69,10 +69,13 @@ find_gateway() {
 		if (rtnl_route_get_family(route) != AF_INET) continue;
 
 		// Find a default route
-		if (rtnl_route_get_dst_len(route) != 0) continue;
+		if (nl_addr_get_prefixlen(rtnl_route_get_dst(route)) != 0) continue;
+
+		// Assert a next hop
+		if (rtnl_route_get_nnexthops(route) < 1) continue;
 		
 		// Found a gateway
-		struct nl_addr *gw_ = rtnl_route_get_gateway(route);
+		struct nl_addr *gw_ = rtnl_route_nh_get_gateway(rtnl_route_nexthop_n(route, 0));
 		if (!gw_) continue;
 
 		// Clone the address, as this one will be freed with the route cache (will it?)
@@ -92,7 +95,7 @@ find_gateway() {
 	nl_close(sock);
 
 	// Finally destroy the netlink handle
-	nl_handle_destroy(sock);
+	nl_socket_free(sock);
 
 	return gw;
 }
@@ -125,7 +128,7 @@ enum nss_status _nss_gw_name_gethostbyname_r (
 			8 /* Alignment */
 			)  {   /* official name */
 
-			nl_addr_destroy(gw);
+			nl_addr_put(gw);
 
 			*errnop = ERANGE;
 			*h_errnop = NO_RECOVERY;
@@ -155,7 +158,7 @@ enum nss_status _nss_gw_name_gethostbyname_r (
 		result->h_addr_list[0] = buffer + astart;
 		result->h_addr_list[1] = NULL;
 
-		nl_addr_destroy(gw);
+		nl_addr_put(gw);
 		return NSS_STATUS_SUCCESS;
 	}{
 		*errnop = EINVAL;

@@ -1,3 +1,9 @@
+libnss-gw-name (0.2.1-2) UNRELEASED; urgency=low
+
+  * Port to libnl-3.x (Closes: #688166)
+
+ -- Joachim Breitner <nomeata@debian.org>  Thu, 20 Sep 2012 09:28:21 +0200
+
 libnss-gw-name (0.2.1-1) unstable; urgency=low
 
   * Fix typo in Homepage, thx to Tomas Pospisek for noticing (Closes: #574893)
