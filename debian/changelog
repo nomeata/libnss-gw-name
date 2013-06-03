@@ -1,3 +1,9 @@
+libnss-gw-name (0.3-2) unstable; urgency=low
+
+  * Upload to unstable 
+
+ -- Joachim Breitner <nomeata@debian.org>  Mon, 03 Jun 2013 14:34:24 +0200
+
 libnss-gw-name (0.3-1) experimental; urgency=low
 
   * Port to libnl-3.x (Closes: #688166)
