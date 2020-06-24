@@ -75,6 +75,9 @@ find_gateway() {
 		// Found a gateway
 		struct nl_addr *gw_ = rtnl_route_nh_get_gateway(rtnl_route_nexthop_n(route, 0));
 		if (!gw_) continue;
+		
+		// Consider only the main route table
+		if (rtnl_route_get_table(route) != RT_TABLE_MAIN) continue;
 
 		// Clone the address, as this one will be freed with the route cache (will it?)
 		gw = nl_addr_clone(gw_);
